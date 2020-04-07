@@ -109,6 +109,7 @@ section {
 }
 
 body {
+	background-color: #342437 !important;
 	line-height: 1;
 }
 
@@ -249,12 +250,12 @@ a {
 	-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 	border-bottom: dotted 1px;
-	color: #4287f5;
+	color: #727cf5;
 	text-decoration: none;
 }
 a:hover {
-	border-bottom-color: #4287f5;
-	color: #4287f5 !important;
+	border-bottom-color: #727cf5;
+	color: #727cf5 !important;
 }
 a:hover strong {
 	color: inherit;
@@ -262,7 +263,7 @@ a:hover strong {
 
 strong,
 b {
-	color: #3d4449;
+	color: #eff1f2;
 	font-weight: 600;
 }
 
@@ -281,7 +282,7 @@ h3,
 h4,
 h5,
 h6 {
-	color: #3d4449;
+	color: #eff1f2 !important;
 	font-family: 'Roboto Slab', serif;
 	font-weight: 700;
 	line-height: 1.5;
@@ -1535,7 +1536,7 @@ header p {
 }
 
 header.major > :last-child {
-	border-bottom: solid 3px #4287f5;
+	border-bottom: solid 3px #727cf5;
 	display: inline-block;
 	margin: 0 0 2em 0;
 	padding: 0 0.75em 0.5em 0;
@@ -1551,7 +1552,7 @@ form {
 }
 
 label {
-	color: #3d4449;
+	color: #eff1f2;
 	display: block;
 	font-size: 0.9em;
 	font-weight: 600;
@@ -1599,8 +1600,8 @@ input[type='search']:focus,
 input[type='url']:focus,
 select:focus,
 textarea:focus {
-	border-color: #4287f5;
-	box-shadow: 0 0 0 1px #4287f5;
+	border-color: #727cf5;
+	box-shadow: 0 0 0 1px #727cf5;
 }
 
 select {
@@ -1700,8 +1701,8 @@ input[type='radio']:checked + label:before {
 }
 input[type='checkbox']:focus + label:before,
 input[type='radio']:focus + label:before {
-	border-color: #4287f5;
-	box-shadow: 0 0 0 1px #4287f5;
+	border-color: #727cf5;
+	box-shadow: 0 0 0 1px #727cf5;
 }
 
 input[type='checkbox'] + label:before {
@@ -1972,6 +1973,7 @@ ul.contact {
 	padding: 0;
 }
 ul.contact li {
+	color: #ffffff;
 	text-decoration: none;
 	border-top: solid 1px rgba(210, 215, 217, 0.75);
 	margin: 1.5em 0 0 0;
@@ -1991,7 +1993,7 @@ ul.contact li:before {
 	font-weight: 400;
 }
 ul.contact li:before {
-	color: #4287f5;
+	color: #727cf5;
 	display: inline-block;
 	font-size: 1.5em;
 	height: 1.125em;
@@ -2043,7 +2045,7 @@ ul.pagination li > .page {
 	text-align: center;
 }
 ul.pagination li > .page.active {
-	background-color: #4287f5;
+	background-color: #727cf5;
 	color: #ffffff !important;
 }
 ul.pagination li > .page.active:hover {
@@ -2139,8 +2141,8 @@ button, */
 	background-color: transparent;
 	border-radius: 0.375em;
 	border: 0;
-	box-shadow: inset 0 0 0 2px #4287f5;
-	color: #4287f5 !important;
+	box-shadow: inset 0 0 0 2px #727cf5;
+	color: #727cf5 !important;
 	cursor: pointer;
 	display: inline-block;
 	font-family: 'Roboto Slab', serif;
@@ -2188,7 +2190,10 @@ input[type='reset'].small,
 input[type='button'].small,
 button.small,
 .button.small {
-	font-size: 0.6em;
+	font-size: 0.7em;
+}
+button.search {
+	font-size: 0.75em;
 }
 input[type='submit'].large,
 input[type='reset'].large,
@@ -2204,7 +2209,7 @@ input[type='reset'].primary,
 input[type='button'].primary,
 button.primary,
 .button.primary {
-	background-color: #4287f5;
+	background-color: #727cf5;
 	box-shadow: none;
 	color: #ffffff !important;
 }
@@ -2309,7 +2314,7 @@ button:disabled,
 	width: 10em;
 }
 .features article .icon:before {
-	color: #4287f5;
+	color: #727cf5;
 	font-size: 2.75rem;
 	position: relative;
 	top: 0.05em;
@@ -2679,12 +2684,13 @@ button:disabled,
 	-webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 	-ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 	transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-	background-color: #f5f6f7;
+	background: linear-gradient(rgb(62, 43, 65), rgb(27, 14, 29));
 	font-size: 0.9em;
 	position: relative;
 	width: 26em;
 }
 #sidebar h2 {
+	color: #ffffff;
 	font-size: 1.38889em;
 }
 #sidebar > .inner {
@@ -2856,7 +2862,7 @@ button:disabled,
 	display: -webkit-flex;
 	display: -ms-flex;
 	display: flex;
-	border-bottom: solid 5px #4287f5;
+	border-bottom: solid 5px #727cf5;
 	padding: 6em 0 1em 0;
 	position: relative;
 }
@@ -3018,7 +3024,7 @@ button:disabled,
 #menu ul a,
 #menu ul span {
 	border-bottom: 0;
-	color: inherit;
+	color: #ffffff;
 	cursor: pointer;
 	display: block;
 	font-size: 0.9em;
@@ -3026,7 +3032,7 @@ button:disabled,
 }
 #menu ul a:hover,
 #menu ul span:hover {
-	color: #4287f5;
+	color: #727cf5;
 }
 #menu ul a.opener,
 #menu ul span.opener {
@@ -3064,7 +3070,7 @@ button:disabled,
 }
 #menu ul a.opener:hover:before,
 #menu ul span.opener:hover:before {
-	color: #4287f5;
+	color: #727cf5;
 }
 #menu ul a.opener.active + ul,
 #menu ul span.opener.active + ul {

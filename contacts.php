@@ -15,7 +15,7 @@
 </head>
 
 <body class="is-preload">
-	<div id="vueNewContact">
+	<div id="vueContacts">
 		<!-- Wrapper -->
 		<div id="wrapper">
 
@@ -98,10 +98,10 @@
 							<div class="row gtr-uniform">
 								<div class="col-md-3 col-sm-12">
 									<label for="zipCode0">CEP:</label>
-									<div class="input-group mb-3">
+									<div class="input-group mb-3" style="align-items: center;">
 										<input type="text" id="zipCode" v-model="zipCode" class="form-control" placeholder="CEP..." aria-label="Recipient's username" aria-describedby="basic-addon2">
 										<div class="input-group-append">
-											<button class="button btn btn-outline-secondary" type="button" @click="getCep()"><span class=" icon solid fa-search"></span></button>
+											<button class="button search btn btn-outline-secondary" type="button" @click="getCep()"><span class=" icon solid fa-search"></span></button>
 										</div>
 									</div>
 								</div>
@@ -141,9 +141,9 @@
 			<?php include_once("sidebar.php"); ?>
 
 		</div><!-- wrapper -->
-	</div> <!-- vueNewContact -->
+	</div> <!-- vueContacts -->
 
-	<script type="text/javascript" src="scripts/newContact.js"></script>
+	<script type="text/javascript" src="scripts/contacts.js"></script>
 	<?php require_once("footerScripts.php"); ?>
 </body>
 

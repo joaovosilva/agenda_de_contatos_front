@@ -8,7 +8,7 @@
             </header>
             <ul>
                 <li><a href="index.php">Meus Contatos</a></li>
-                <li><a href="newContact.php">Novo Contato</a></li>
+                <li><a href="contacts.php">Novo Contato</a></li>
                 <li><a href="">Perfil</a></li>
                 <li><a href="">Logout</a></li>
                 <li><a href="">Generic</a></li>

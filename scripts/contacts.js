@@ -1,5 +1,5 @@
-var vueNewContact = new Vue({
-	el: '#vueNewContact',
+var vueContacts = new Vue({
+	el: '#vueContacts',
 
 	data() {
 		return {

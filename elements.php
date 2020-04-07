@@ -456,7 +456,7 @@ print 'It took ' + i + ' iterations to sort the deck.';
 									</header>
 									<ul>
 										<li><a href="index.php">Homepage</a></li>
-										<li><a href="newContact.php">Generic</a></li>
+										<li><a href="contacts.php">Generic</a></li>
 										<li><a href="elements.php">Elements</a></li>
 										<li>
 											<span class="opener">Submenu</span>
