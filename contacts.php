@@ -15,14 +15,13 @@
 </head>
 
 <body class="is-preload">
-	<div id="vueContacts">
+	<div>
 		<!-- Wrapper -->
 		<div id="wrapper">
 
 			<!-- Main -->
 			<div id="main">
-				<div class="inner">
-
+				<div id="vueContacts" class="inner">
 					<!-- Header -->
 					<header id="header">
 						<span class="logo"><strong>Contatos</strong></span>
@@ -35,21 +34,21 @@
 								<h3>Novo contato</h3>
 							</header>
 							<ul class="actions" style="justify-content: flex-end;">
-								<li><button href="#" class="button small icon solid fa-save">salvar</button></li>
+								<li><button @click="saveContact" class="button small icon solid fa-save">salvar</button></li>
 							</ul>
 							<form method="post" action="#">
 								<div class="row gtr-uniform">
 									<div class="col-md-4 col-sm-12">
 										<label for="name">Nome:</label>
-										<input type="text" id="name" placeholder="Nome..." />
+										<input type="text" v-model="name" placeholder="Nome..." autocomplete="false" />
 									</div>
 									<div class="col-md-4 col-sm-12">
 										<label for="company">Empresa:</label>
-										<input type="text" id="company" placeholder="Empresa..." />
+										<input type="text" v-model="company" placeholder="Empresa..." />
 									</div>
 									<div class="col-md-4 col-sm-12">
 										<label for="role">Cargo:</label>
-										<input type="text" id="role" placeholder="Cargo..." />
+										<input type="text" v-model="role" placeholder="Cargo..." />
 									</div>
 								</div>
 							</form>
@@ -60,28 +59,24 @@
 						<header style="position: absolute;">
 							<h5>Telefones</h5>
 						</header>
-						<ul class="actions" style="justify-content: flex-end;">
-							<li><button href="#" class="button small"><span class="icon solid fa-plus"></span></li>
+						<ul id="phoneActions" class="actions" style="justify-content: flex-end;">
+							<li><button @click="addPhone" class="button small"><span class="icon solid fa-plus"></span></li>
 						</ul>
 						<form method="post" action="#">
-							<div class="row gtr-uniform">
-								<div class="col-md-4 col-sm-12">
-									<div id="phoneInput0">
-										<label for="telefone">Telefone:</label>
-										<div class="input-group mb-3">
-											<select class="col-5 custom-select" id="inputGroupSelect01">
-												<option selected>Selecione...</option>
-												<option value="1">Celular</option>
-												<option value="2">Residencial</option>
-												<option value="3">Comercial</option>
-												<option value="4">Outros</option>
-											</select>
-											<div class="col-7 input-group-append no-padding">
-												<input type="text" id="phone01" placeholder="Telefone..." />
-											</div>
+							<div id="phonesDiv" class="row gtr-uniform">
+								<div id="phoneDiv0" class="col-md-4 col-sm-12">
+									<label for="phoneLabel0">Telefone:</label>
+									<div class="input-group mb-3">
+										<select class="col-5 custom-select" id="phoneSelect0">
+											<option value="Celular" selected>Celular</option>
+											<option value="Residencial">Residencial</option>
+											<option value="Comercial">Comercial</option>
+											<option value="Outros">Outros</option>
+										</select>
+										<div class="col-7 input-group-append no-padding">
+											<input type="text" id="phoneInput0" placeholder="Telefone..." />
 										</div>
 									</div>
-
 								</div>
 							</div>
 						</form>
@@ -91,47 +86,50 @@
 						<header style="position: absolute;">
 							<h5>Endereços</h5>
 						</header>
-						<ul class="actions" style="justify-content: flex-end;">
-							<li><button href="#" class="button small"><span class="icon solid fa-plus"></span></li>
+						<ul id="addressActions" class="actions" style="justify-content: flex-end;">
+							<li><button type="button" @click="addAddress" class="button small"><span class="icon solid fa-plus"></span></li>
 						</ul>
 						<form>
-							<div class="row gtr-uniform">
-								<div class="col-md-3 col-sm-12">
-									<label for="zipCode0">CEP:</label>
-									<div class="input-group mb-3" style="align-items: center;">
-										<input type="text" id="zipCode" v-model="zipCode" class="form-control" placeholder="CEP..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-										<div class="input-group-append">
-											<button class="button search btn btn-outline-secondary" type="button" @click="getCep()"><span class=" icon solid fa-search"></span></button>
+							<div id="addressesDiv">
+								<div id="addressDiv0">
+									<div class="row gtr-uniform">
+										<div class="col-md-3 col-sm-12">
+											<label for="zipCode0">CEP:</label>
+											<div class="input-group mb-3" style="align-items: center;">
+												<input type="text" id="zipCode0" class="form-control" placeholder="CEP..." aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="false">
+												<div class="input-group-append">
+													<button id="zipButton0" class="button search btn btn-outline-secondary" type="button" @click="getCep(0)"><span class=" icon solid fa-search"></span></button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row gtr-uniform">
+										<div class="col-md-6 col-sm-12">
+											<label for="street0">Logradouro:</label>
+											<input type="text" id="street0" placeholder="Logradouro..." autocomplete="false" />
+										</div>
+										<div class="col-md-3 col-sm-12">
+											<label for="number0">Número:</label>
+											<input type="text" id="number0" placeholder="Número..." autocomplete="false" />
+										</div>
+										<div class="col-md-3 col-sm-12">
+											<label for="neighborhood0">Bairro:</label>
+											<input type="text" id="neighborhood0" placeholder="Bairro..." autocomplete="false" />
+										</div>
+										<div class="col-md-4 col-sm-12">
+											<label for="complement0">Complemento:</label>
+											<input type="text" id="complement0" placeholder="Complemento..." autocomplete="false" />
+										</div>
+										<div class="col-md-4 col-sm-12">
+											<label for="city0">Cidade:</label>
+											<input type="text" id="city0" placeholder="Cidade..." autocomplete="false" />
+										</div>
+										<div class="col-md-4 col-sm-12">
+											<label for="state0">Estado:</label>
+											<input type="text" id="state0" placeholder="Estado..." autocomplete="false" />
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row gtr-uniform">
-								<div class="col-md-6 col-sm-12">
-									<label for="street">Logradouro:</label>
-									<input type="text" id="street" placeholder="Logradouro..." />
-								</div>
-								<div class="col-md-3 col-sm-12">
-									<label for="number">Número:</label>
-									<input type="text" id="number" placeholder="Número..." />
-								</div>
-								<div class="col-md-3 col-sm-12">
-									<label for="neighborhood">Bairro:</label>
-									<input type="text" id="neighborhood" placeholder="Bairro..." />
-								</div>
-								<div class="col-md-4 col-sm-12">
-									<label for="complement">Complemento:</label>
-									<input type="text" id="complement" placeholder="Complemento..." />
-								</div>
-								<div class="col-md-4 col-sm-12">
-									<label for="city">Cidade:</label>
-									<input type="text" id="city" placeholder="Cidade..." />
-								</div>
-								<div class="col-md-4 col-sm-12">
-									<label for="state">Estado:</label>
-									<input type="text" id="state" placeholder="Estado..." />
-								</div>
-
 							</div>
 						</form>
 					</section>
@@ -143,6 +141,7 @@
 		</div><!-- wrapper -->
 	</div> <!-- vueContacts -->
 
+	<script type="text/javascript" src="scripts/sidebar.js"></script>
 	<script type="text/javascript" src="scripts/contacts.js"></script>
 	<?php require_once("footerScripts.php"); ?>
 </body>

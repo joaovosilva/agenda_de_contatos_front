@@ -13,7 +13,7 @@
 /*********************************************************************************/
 
 body {
-	background-image: url('images/overlay.png'), url('images/bg.jpg');
+	background-image: url('images/overlay.png'), url('images/agenda5.jpg');
 	background-repeat: repeat, no-repeat;
 	background-size: auto, 100% 100%;
 }
@@ -95,8 +95,7 @@ ul,
 ol,
 dl,
 table,
-blockquote,
-form {
+blockquote {
 	margin-bottom: 2em;
 }
 
@@ -104,9 +103,6 @@ form {
 
 table {
 	width: 100%;
-}
-
-table.default {
 }
 
 table.default tbody tr {
@@ -128,9 +124,6 @@ table.default thead {
 }
 
 /* Form */
-
-form {
-}
 
 form label {
 	display: block;
@@ -202,9 +195,6 @@ article > :last-child {
 section:last-child,
 article:last-child {
 	margin-bottom: 0;
-}
-
-header {
 }
 
 header > p {
@@ -314,9 +304,6 @@ ul.default li {
 	padding-left: 0.5em;
 }
 
-ul.actions {
-}
-
 ul.actions li {
 	display: inline-block;
 	margin-left: 0.5em;
@@ -360,10 +347,6 @@ ol.default li {
 /*********************************************************************************/
 /* Nav                                                                           */
 /*********************************************************************************/
-
-#nav {
-}
-
 #nav a {
 	position: relative;
 	display: inline-block;
@@ -391,16 +374,17 @@ ol.default li {
 }
 
 /* Me */
-
-#me {
+#login .pic {
+	position: absolute;
+	display: block;
 }
 
-#me .pic {
+#register .pic {
 	position: relative;
 	display: block;
 }
 
-#me .pic:before {
+#login .pic:before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -411,15 +395,12 @@ ol.default li {
 	z-index: 1;
 }
 
-#me2 {
-}
-
-#me2 .pic {
+#register .pic {
 	position: relative;
-	display: block;
+	right: 0px;
 }
 
-#me2 .pic:before {
+#register .pic:before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -451,9 +432,6 @@ ol.default li {
 
 #footer a:hover {
 	color: rgba(255, 255, 255, 1);
-}
-
-#footer .copyright {
 }
 
 #footer .copyright li {

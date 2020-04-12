@@ -1,6 +1,6 @@
 <script>
     var config = {
-        server: "http://localhost:8000/api",
+        server: "http://localhost:8000",
         headers: {
             'Authorization': 'Bearer '
         }

@@ -82,6 +82,7 @@
 
 		<?php require_once("sidebar.php"); ?>
 	</div>
+	<script type="text/javascript" src="scripts/sidebar.js"></script>
 	<?php require_once("footerScripts.php"); ?>
 </body>
 

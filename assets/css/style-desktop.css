@@ -201,9 +201,10 @@ input[type='reset'].huge,
 /*********************************************************************************/
 
 #main {
-	width: 45em;
+	width: 35em;
 	background: #ffffff;
 	box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.25);
+	margin-left: 10% !important;
 }
 
 .panel {
@@ -211,18 +212,61 @@ input[type='reset'].huge,
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 45em;
+	width: 35em;
 }
 
 /* Me */
 
-#me {
+.panel {
 	padding: 0;
 	height: 20em;
 }
 
-#me .pic {
-	display: block;
+#main .panel a {
+	display: flex;
+	justify-content: center;
+}
+
+#main .panel p {
+	position: absolute;
+	top: 10%;
+	font-size: 22px;
+	font-family: "Letter gothic";
+	color: #ffffff;
+}
+
+#main .formulario {
+	display: flex;
+	width: 66%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+#main .formulario form {
+	padding: 0% 15% 0% 15%;
+	width: 100%;
+}
+
+#main .formulario label {
+	color: #3d2a40;
+	font-weight: bolder;
+	margin-bottom: 0px;
+	font-size: 15px;
+}
+
+#main .formulario input {
+	border: solid 1.5px #3d2a40;
+	height: 2.25rem;
+}
+
+#main .formulario button {
+	background: linear-gradient(rgb(62, 43, 65), rgb(27, 14, 29));
+	height: 2.25rem;
+}
+
+.panel .pic {
+	display: flex;
 	position: absolute;
 	right: -1px;
 	top: 0;
@@ -232,97 +276,7 @@ input[type='reset'].huge,
 	width: 34%;
 }
 
-/* #me .pic img {
-	position: relative;
-	display: block;
-	height: 100%;
-} */
-
-#me .pic .arrow {
-	display: block;
-	position: absolute;
-	right: 0;
-	top: 50%;
-	margin-top: -1.375em;
-	width: 2.75em;
-	height: 2.75em;
-	background: #727cf5;
-	color: #ffffff;
-	text-align: center;
-	line-height: 2.75em;
-	font-size: 1.5em;
-	z-index: 1;
-	-moz-transition: width 0.15s ease-in-out, padding-right 0.15s ease-in-out;
-	-webkit-transition: width 0.15s ease-in-out, padding-right 0.15s ease-in-out;
-	-o-transition: width 0.15s ease-in-out, padding-right 0.15s ease-in-out;
-	-ms-transition: width 0.15s ease-in-out, padding-right 0.15s ease-in-out;
-	transition: width 0.15s ease-in-out, padding-right 0.15s ease-in-out;
-}
-
-#me .pic .arrow:before {
-	position: relative;
-	padding-right: 0;
-	top: 0.125em;
-}
-
-#me .pic .arrow span {
-	display: block;
-	text-indent: -9999px;
-}
-
-#me .pic:hover .arrow {
-	width: 3em;
-	padding-right: 0.25em;
-}
-
-#me header {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	margin-left: 2.5em;
-}
-
-#me header > h1 {
-	position: absolute;
-	left: 0;
-	bottom: 52.5%;
-	margin: 0;
-}
-
-#me header > p {
-	position: absolute;
-	left: 0;
-	top: 52.5%;
-	font-size: 1.5em;
-	letter-spacing: -0.015em;
-	margin-top: 0;
-}
-
-/* me2 */
-
-#me2 {
-	padding: 0;
-	height: 20em;
-}
-
-#me2 .pic {
-	top: 0;
-	height: 100%;
-	text-decoration: none;
-	position: absolute;
-	background: linear-gradient(rgb(62, 43, 65), rgb(27, 14, 29));
-	width: 34%;
-}
-
-/* #me2 .pic img {
-	position: relative;
-	display: block;
-	height: 100%;
-} */
-
-#me2 .pic .arrow {
+#main .pic .arrow {
 	display: block;
 	position: absolute;
 	top: 50%;
@@ -342,44 +296,21 @@ input[type='reset'].huge,
 	transition: width 0.15s ease-in-out, padding-right 0.15s ease-in-out;
 }
 
-#me2 .pic .arrow:before {
-	position: relative;
-	padding-right: 0;
-	top: 0.125em;
+#main #login .pic .arrow {
+	right: 0
 }
 
-#me2 .pic .arrow span {
-	display: block;
-	text-indent: -9999px;
+#main #register {
+	display: flex;
 }
 
-#me2 .pic:hover .arrow {
+#main #register .pic .arrow {
+	left: 0
+}
+
+#main .pic:hover .arrow {
 	width: 3em;
 	padding-right: 0.25em;
-}
-
-#me2 header {
-	position: absolute;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	margin-left: 2.5em;
-}
-
-#me2 header > h1 {
-	position: absolute;
-	left: 0;
-	bottom: 52.5%;
-	margin: 0;
-}
-
-#me2 header > p {
-	position: absolute;
-	left: 0;
-	top: 52.5%;
-	font-size: 1.5em;
-	letter-spacing: -0.015em;
-	margin-top: 0;
 }
 
 /*********************************************************************************/
