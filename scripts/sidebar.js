@@ -5,8 +5,6 @@ var vueSidebar = new Vue({
 	},
 	methods: {
 		authenticate() {
-			console.log('EU TO AQUI');
-
 			var access_token = localStorage.getItem('access_token');
 			if (access_token) {
 				config.headers = {
@@ -36,8 +34,6 @@ var vueSidebar = new Vue({
 		},
 
 		logout() {
-            console.log("LOGOUT");
-            
 			var access_token = localStorage.getItem('access_token');
 			localStorage.removeItem('access_token');
 

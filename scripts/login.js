@@ -37,8 +37,6 @@ var vueLogin = new Vue({
 				dataType: 'json',
 			})
 				.done((result) => {
-                    console.log(result);
-                    
 					if (typeof result.error != 'undefined') {
 						swal('Opss', 'Usuário ou senha inválida.', 'error');
 					} else {
@@ -66,15 +64,21 @@ var vueLogin = new Vue({
 				return;
 			}
 
+			let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if (!regex.test(this.emailRegister)) {
+				swal('Oops', 'Formato de email inválido', 'info');
+				return;
+			}
+
 			if (this.passwordRegister == '') {
 				swal('Oops', 'Digite a sua senha', 'info');
 				return;
-            }
-            
-            if (this.passwordRegister != this.passwordRegisterConfirm) {
-                swal('Oops', 'Campos de senha diferentes', 'info');
+			}
+
+			if (this.passwordRegister != this.passwordRegisterConfirm) {
+				swal('Oops', 'Campos de senha diferentes', 'info');
 				return;
-            }
+			}
 
 			var data = {
 				name: this.nameRegister,
@@ -94,8 +98,18 @@ var vueLogin = new Vue({
 							'Sucesso',
 							'Usuario cadastrado com sucesso, voce será redirecionado para realizar o login.',
 							'success'
-                        );
-                        this.cleanRegister();
+						).then((value) => {
+							if (value) {
+								$.ajax({
+									method: 'GET',
+									url: config.server + '/emails/sendWelcome',
+									data: result.data
+								}).done((result) => {
+									console.log("Email enviado");
+								});
+							}
+						});
+						this.cleanRegister();
 						$('#login-link').click();
 					} else {
 						swal('Oops', result.msg, 'info');
@@ -104,13 +118,13 @@ var vueLogin = new Vue({
 				.fail(() => {
 					swal('Oops', 'Verifique o servidor ou administrador do sistema', 'info');
 				});
-        },
-        cleanRegister() {
-            this.nameRegister = '';
+		},
+		cleanRegister() {
+			this.nameRegister = '';
 			this.emailRegister = '';
 			this.passwordRegister = '';
 			this.passwordRegisterConfirm = '';
-        },
+		},
 		keyUpEmail(e) {
 			if (e.keyCode == 13) {
 				this.$refs.passwordLogin.focus();

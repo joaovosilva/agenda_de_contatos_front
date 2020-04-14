@@ -21,7 +21,7 @@
 
 		<!-- Main -->
 		<div id="main">
-			<div class="inner">
+			<div id="vueIndex" class="inner">
 
 				<!-- Header -->
 				<header id="header">
@@ -31,47 +31,25 @@
 				<!-- Banner -->
 				<section id="banner">
 					<div class="content">
-						<header>
+						<header style="position: absolute;">
 							<h3>Meus contatos</h3>
 						</header>
 						<ul class="actions" style="justify-content: flex-end;">
-							<li><button href="#" class="button icon solid fa-plus">Novo</button></li>
+							<li><a href="contacts.php"><button class=" button icon solid fa-plus">Novo</button></a></li>
 						</ul>
 						<div class="table-wrapper">
-							<table>
+							<table id="contactsTable" class="table table-bordered">
 								<thead>
 									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
+										<th>Nome</th>
+										<th>Empresa</th>
+										<th>Cargo</th>
+										<th>Telefone</th>
+										<th>Opções</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Item1</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item2</td>
-										<td>Vis ac commodo adipiscing arcu aliquet.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item3</td>
-										<td> Morbi faucibus arcu accumsan lorem.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item4</td>
-										<td>Vitae integer tempus condimentum.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item5</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
+									<!-- Inoformações preenchidas com o rows.add do DataTable -->
 								</tbody>
 							</table>
 						</div>
@@ -83,6 +61,7 @@
 		<?php require_once("sidebar.php"); ?>
 	</div>
 	<script type="text/javascript" src="scripts/sidebar.js"></script>
+	<script type="text/javascript" src="scripts/index.js"></script>
 	<?php require_once("footerScripts.php"); ?>
 </body>
 

@@ -68,13 +68,11 @@
 									<label for="phoneLabel0">Telefone:</label>
 									<div class="input-group mb-3">
 										<select class="col-5 custom-select" id="phoneSelect0">
-											<option value="Celular" selected>Celular</option>
-											<option value="Residencial">Residencial</option>
-											<option value="Comercial">Comercial</option>
-											<option value="Outros">Outros</option>
+											<option value="celular" selected>Celular</option>
+											<option value="residencial">Residencial</option>
 										</select>
 										<div class="col-7 input-group-append no-padding">
-											<input type="text" id="phoneInput0" placeholder="Telefone..." />
+											<input type="text" @keyup="phoneMask(0)" id="phoneInput0" placeholder="Telefone..." autocomplete="off" />
 										</div>
 									</div>
 								</div>
@@ -96,7 +94,7 @@
 										<div class="col-md-3 col-sm-12">
 											<label for="zipCode0">CEP:</label>
 											<div class="input-group mb-3" style="align-items: center;">
-												<input type="text" id="zipCode0" class="form-control" placeholder="CEP..." aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="false">
+												<input type="text" @keyup="zipCodeMask(0)" id="zipCode0" class="form-control" placeholder="CEP..." aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="off">
 												<div class="input-group-append">
 													<button id="zipButton0" class="button search btn btn-outline-secondary" type="button" @click="getCep(0)"><span class=" icon solid fa-search"></span></button>
 												</div>
@@ -106,27 +104,27 @@
 									<div class="row gtr-uniform">
 										<div class="col-md-6 col-sm-12">
 											<label for="street0">Logradouro:</label>
-											<input type="text" id="street0" placeholder="Logradouro..." autocomplete="false" />
+											<input type="text" id="street0" placeholder="Logradouro..." autocomplete="off" />
 										</div>
 										<div class="col-md-3 col-sm-12">
 											<label for="number0">Número:</label>
-											<input type="text" id="number0" placeholder="Número..." autocomplete="false" />
+											<input type="text" id="number0" placeholder="Número..." autocomplete="off" />
 										</div>
 										<div class="col-md-3 col-sm-12">
 											<label for="neighborhood0">Bairro:</label>
-											<input type="text" id="neighborhood0" placeholder="Bairro..." autocomplete="false" />
+											<input type="text" id="neighborhood0" placeholder="Bairro..." autocomplete="off" />
 										</div>
 										<div class="col-md-4 col-sm-12">
 											<label for="complement0">Complemento:</label>
-											<input type="text" id="complement0" placeholder="Complemento..." autocomplete="false" />
+											<input type="text" id="complement0" placeholder="Complemento..." autocomplete="off" />
 										</div>
 										<div class="col-md-4 col-sm-12">
 											<label for="city0">Cidade:</label>
-											<input type="text" id="city0" placeholder="Cidade..." autocomplete="false" />
+											<input type="text" id="city0" placeholder="Cidade..." autocomplete="off" />
 										</div>
 										<div class="col-md-4 col-sm-12">
 											<label for="state0">Estado:</label>
-											<input type="text" id="state0" placeholder="Estado..." autocomplete="false" />
+											<input type="text" id="state0" placeholder="Estado..." autocomplete="off" />
 										</div>
 									</div>
 								</div>
@@ -143,6 +141,13 @@
 
 	<script type="text/javascript" src="scripts/sidebar.js"></script>
 	<script type="text/javascript" src="scripts/contacts.js"></script>
+	<script>
+		<?php
+		if (isset($_GET['contact_id'])) {
+			echo "vueContacts.getContact(" . $_GET['contact_id'] . ");";
+		}
+		?>
+	</script>
 	<?php require_once("footerScripts.php"); ?>
 </body>
 

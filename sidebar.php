@@ -10,9 +10,8 @@
                 <ul>
                     <li><a href="index.php">Meus Contatos</a></li>
                     <li><a href="contacts.php">Novo Contato</a></li>
-                    <li><a href="">Perfil</a></li>
                     <li><a @click="logout">Logout</a></li>
-                    <li><a href="">Generic</a></li>
+                    <!-- <li><a href="">Generic</a></li>
                     <li><a href="elements.php">Elements</a></li>
                     <li>
                         <span class="opener">Submenu</span>
@@ -22,12 +21,12 @@
                             <li><a href="#">Tempus Magna</a></li>
                             <li><a href="#">Feugiat Veroeros</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
 
             <!-- Section -->
-            <section>
+            <section style="margin-top: 15% !important;">
                 <header class="major">
                     <h2>Dev</h2>
                 </header>

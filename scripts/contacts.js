@@ -17,6 +17,38 @@ var vueContacts = new Vue({
 	},
 
 	methods: {
+		getContact(id) {
+			$.ajax({
+				method: 'GET',
+				url: config.server + '/contacts/getContact/' + id,
+				headers: config.headers,
+			}).done((result) => {
+				if (result.status) {
+					this.contactId = result.data.contact_id;
+					this.name = result.data.name;
+					this.company = result.data.company;
+					this.role = result.data.role;
+					for (let i = 0; i < result.data.phones.length; i++) {
+						if (i > 0) this.addPhone();
+						this.phones.push({phone_id: result.data.phones[i].phone_id})
+						$('#phoneSelect' + i).val(result.data.phones[i].type);
+						$('#phoneInput' + i).val(result.data.phones[i].phone);
+					}
+					for (let i = 0; i < result.data.addresses.length; i++) {
+						if (i > 0)  this.addAddress();
+						this.addresses.push({ address_id: result.data.addresses[i].address_id });
+						$('#zipCode' + i).val(result.data.addresses[i].zip_code);
+						$('#street' + i).val(result.data.addresses[i].street);
+						$('#number' + i).val(result.data.addresses[i].number);
+						$('#neighborhood' + i).val(result.data.addresses[i].neighborhood);
+						$('#complement' + i).val(result.data.addresses[i].complement);
+						$('#city' + i).val(result.data.addresses[i].city);
+						$('#state' + i).val(result.data.addresses[i].state);
+					}
+
+				}
+			});
+		},
 		saveContact() {
 			if (this.name == '') {
 				swal('Oops', 'Digite um nome de contato', 'info');
@@ -24,26 +56,48 @@ var vueContacts = new Vue({
 			}
 
 			for (let i = 0; i <= this.phonesQuantity; i++) {
-				this.phones.push({
-					type: $('#phoneSelect' + i).val(),
-					phone: $('#phoneInput' + i).val(),
-				});
+				if (this.phones.length > 0) {
+					this.phones[i] = {
+						...this.phones[i],
+						type: $('#phoneSelect' + i).val(),
+						phone: $('#phoneInput' + i).val(),
+					};
+				} else {
+					this.phones.push({
+						type: $('#phoneSelect' + i).val(),
+						phone: $('#phoneInput' + i).val(),
+					});
+				}
 			}
 
 			for (let i = 0; i <= this.addressesQuantity; i++) {
-				this.addresses.push({
-					zip_code: $('#zipCode' + i).val(),
-					street: $('#street' + i).val(),
-					number: $('#number' + i).val(),
-					neighborhood: $('#neighborhood' + i).val(),
-					complement: $('#complement' + i).val(),
-					city: $('#city' + i).val(),
-					state: $('#state' + i).val(),
-				});
+				if (this.addresses.length > 0) {
+					this.addresses[i] = {
+						...this.addresses[i],
+						zip_code: $('#zipCode' + i).val(),
+						street: $('#street' + i).val(),
+						number: $('#number' + i).val(),
+						neighborhood: $('#neighborhood' + i).val(),
+						complement: $('#complement' + i).val(),
+						city: $('#city' + i).val(),
+						state: $('#state' + i).val(),
+					};
+				} else {
+					this.addresses.push({
+						zip_code: $('#zipCode' + i).val(),
+						street: $('#street' + i).val(),
+						number: $('#number' + i).val(),
+						neighborhood: $('#neighborhood' + i).val(),
+						complement: $('#complement' + i).val(),
+						city: $('#city' + i).val(),
+						state: $('#state' + i).val(),
+					});
+				}
 			}
 
 			let data = {
 				user_fk: localStorage.getItem('user_id'),
+				contact_id: this.contactId,
 				name: this.name,
 				company: this.company,
 				role: this.role,
@@ -58,8 +112,6 @@ var vueContacts = new Vue({
 				headers: config.headers,
 			})
 				.done((result) => {
-					console.log(result);
-
 					if (result.status) {
 						this.clear();
 						swal(
@@ -75,9 +127,10 @@ var vueContacts = new Vue({
 
 		getCep(id) {
 			let zipCode = $('#zipCode'+id).val();
+			zipCode = zipCode.replace("-", "");
 
 			if (zipCode == '') {
-				swal('Oops', 'Digite a descrição do Produto', 'info');
+				swal('Oops', 'Digite um CEP para procurar', 'info');
 				return;
 			}
 
@@ -108,14 +161,11 @@ var vueContacts = new Vue({
 				html += '<label for="phoneLabel' + this.phonesQuantity + '">Telefone:</label>';
 					html += '<div class="input-group mb-3">';
 							html += '<select class="col-5 custom-select" id="phoneSelect' + this.phonesQuantity + '">';
-								html += '<option selected>Selecione...</option>';
-								html += '<option value="Celular">Celular</option>';
-								html += '<option value="Residencial">Residencial</option>';
-								html += '<option value="Comercial">Comercial</option>';
-								html += '<option value="Outros">Outros</option>';
+								html += '<option value="celular">Celular</option>';
+								html += '<option value="residencial">Residencial</option>';
 							html += '</select>';
 						html += '<div class="col-7 input-group-append no-padding">';
-							html += '<input type="text" id="phoneInput' + this.phonesQuantity + '" placeholder="Telefone..." />';
+							html += '<input type="text" onkeyup="vueContacts.phoneMask(' + this.phonesQuantity + ')" id="phoneInput' + this.phonesQuantity + '" placeholder="Telefone..." />';
 						html += '</div>';
 					html += '</div>';
 			html += '</div>';
@@ -138,7 +188,7 @@ var vueContacts = new Vue({
 					html += '<div class="col-md-3 col-sm-12">';
 						html += '<label for="zipCode' + this.addressesQuantity + '">CEP:</label>';
 						html += '<div class="input-group mb-3" style="align-items: center;">';
-							html += '<input type="text" id="zipCode' + this.addressesQuantity + '" class="form-control" placeholder="CEP..." aria-label="Recipient\'s username" aria-describedby="basic-addon2">';
+							html += '<input type="text"onkeyup="vueContacts.zipCodeMask(' + this.addressesQuantity + ')" id="zipCode' + this.addressesQuantity + '" class="form-control" placeholder="CEP..." aria-label="Recipient\'s username" aria-describedby="basic-addon2">';
 							html += '<div class="input-group-append">';
 								html += '<button id="zipButton' + this.addressesQuantity + '" class="button search btn btn-outline-secondary" type="button" onclick="vueContacts.getCep(' + this.addressesQuantity + ')"><span class=" icon solid fa-search"></span></button>';
 							html += '</div>';
@@ -179,6 +229,63 @@ var vueContacts = new Vue({
 		removeAddress() {
 			$('#addressDiv' + this.addressesQuantity).remove();
 			this.addressesQuantity--;
+		},
+
+		phoneMask(id) {
+			const e = window.event;
+			const code = e.keyCode;
+			if (code == 8) return;
+			
+			let input = e.target;
+			let value = input.value;
+			if (!value) return;
+
+			value = value.replace(/\D/g, "");
+
+			const parts = [];
+			if ($('#phoneSelect' + id).val() == 'celular') {
+				const ddd = value.substring(0, 2);
+				const nine = value.substring(2, 3);
+				const prefix = value.substring(3, 7);
+				const suffix = value.substring(7, 11);
+
+				if (ddd) parts.push('(' + ddd + ')');
+				if (nine) parts.push(' ' + nine);
+				if (prefix) parts.push(' ' + prefix);
+				if (suffix) parts.push('-' + suffix);
+			} else {
+				const ddd = value.substring(0, 2);
+				const prefix = value.substring(2, 6);
+				const suffix = value.substring(6, 10);
+
+				if (ddd) parts.push('(' + ddd + ')');
+				if (prefix) parts.push(' ' + prefix);
+				if (suffix) parts.push('-' + suffix);
+			}
+
+			e.target.value = parts.join().replace(/,/g, '');
+		},
+
+		zipCodeMask (id) {
+			const e = window.event;
+			const code = e.keyCode;
+			if (code == 8) return;
+			if (code == 13) this.getCep(id);
+
+			let input = e.target;
+			let value = input.value;
+			if (!value) return;
+
+			value = value.replace(/\D/g, '');
+
+			const parts = [];
+			const prefix = value.substring(0, 5);
+			const suffix = value.substring(5, 8);
+
+			if (prefix) parts.push(prefix);
+			if (suffix) parts.push('-' + suffix);
+
+			e.target.value = parts.join().replace(/,/g, '');
 		},
 
 		clear() {
