@@ -21,15 +21,15 @@ var vueSidebar = new Vue({
 					.done((result) => {
 						if (typeof result.status != 'undefined') {
 							if (!result.status) {
-								window.location.replace('login.php');
+								this.logout();
 							}
 						}
 					})
 					.fail(() => {
-						window.location.replace('login.php');
+						this.logout();
 					});
 			} else {
-				window.location.replace('login.php');
+				this.logout();
 			}
 		},
 

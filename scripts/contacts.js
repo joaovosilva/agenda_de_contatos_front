@@ -30,12 +30,12 @@ var vueContacts = new Vue({
 					this.role = result.data.role;
 					for (let i = 0; i < result.data.phones.length; i++) {
 						if (i > 0) this.addPhone();
-						this.phones.push({phone_id: result.data.phones[i].phone_id})
+						this.phones.push({ phone_id: result.data.phones[i].phone_id });
 						$('#phoneSelect' + i).val(result.data.phones[i].type);
 						$('#phoneInput' + i).val(result.data.phones[i].phone);
 					}
 					for (let i = 0; i < result.data.addresses.length; i++) {
-						if (i > 0)  this.addAddress();
+						if (i > 0) this.addAddress();
 						this.addresses.push({ address_id: result.data.addresses[i].address_id });
 						$('#zipCode' + i).val(result.data.addresses[i].zip_code);
 						$('#street' + i).val(result.data.addresses[i].street);
@@ -45,7 +45,11 @@ var vueContacts = new Vue({
 						$('#city' + i).val(result.data.addresses[i].city);
 						$('#state' + i).val(result.data.addresses[i].state);
 					}
-
+				} else {
+					swal('Oops', result.msg, 'info');
+					if (result.msg.includes('Autenticação Invállida')) {
+						vueSidebar.logout();
+					}
 				}
 			});
 		},
@@ -121,6 +125,11 @@ var vueContacts = new Vue({
 						);
 					} else {
 						swal('Oops', result.msg, 'info');
+						if (result.msg.includes('Autenticação Invállida')) {
+							console.log("entrei aqui");
+							
+							vueSidebar.logout();
+						}
 					}
 				})
 		},

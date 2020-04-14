@@ -69,6 +69,11 @@ var vueIndex = new Vue({
 					});
 
 					this.renderTable(contactsArray);
+				} else {
+					swal('Oops', result.msg, 'info');
+					if (result.msg.includes('Autenticação Invállida')) {
+						vueSidebar.logout();
+					}
 				}
 			});
 		},
@@ -88,6 +93,9 @@ var vueIndex = new Vue({
 					swal('Sucesso', 'Contato excluido com sucesso', 'success');
 				} else {
 					swal('Oops', result.msg, 'info');
+					if (result.msg.includes('Autenticação Invállida')) {
+						vueSidebar.logout();
+					}
 				}
 			});
         },
