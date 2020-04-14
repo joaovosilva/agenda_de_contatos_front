@@ -7,9 +7,8 @@
 <html>
 
 <head>
-	<title>Astral by HTML5 UP</title>
+	<title>Agenda de Contatos - Login</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<?php require_once("headerscripts.php"); ?>
 	<script src="assets/js/init.js"></script>

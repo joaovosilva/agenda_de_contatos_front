@@ -1976,7 +1976,7 @@ ul.contact li {
 	text-decoration: none;
 	border-top: solid 1px rgba(210, 215, 217, 0.75);
 	margin: 1.5em 0 0 0;
-	padding: 1.5em 0 0 3em;
+	padding: 1.5em 0 0 3.5em;
 	position: relative;
 }
 ul.contact li:before {
@@ -2002,6 +2002,7 @@ ul.contact li:before {
 	text-align: center;
 	top: 1em;
 	width: 1.5em;
+	padding-left: 3%;
 }
 ul.contact li:first-child {
 	border-top: 0;
@@ -2760,6 +2761,8 @@ button:disabled,
 #sidebar h2 {
 	color: #ffffff;
 	font-size: 1.38889em;
+	width: 100%;
+	padding-left: 3%;
 }
 
 #sidebar > .inner {
@@ -3156,7 +3159,7 @@ button:disabled,
 #menu > ul > li {
 	border-top: solid 1px rgba(210, 215, 217, 0.75);
 	margin: 0.5em 0 0 0;
-	padding: 0.5em 0 0 0;
+	padding: 0.5em 0 0 0.7em;
 }
 #menu > ul > li > ul {
 	color: #9fa3a6;
